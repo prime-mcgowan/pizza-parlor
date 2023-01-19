@@ -17,9 +17,9 @@ function Admin () {
                 <HeaderRow />
             </thead>
             <tbody>
-            {customerOrder.map((order) => {
-            return <tr key={order.id}><OrderDetails order={order}/></tr>})
-            }
+                {customerOrder.map((order) => {
+                return <tr key={order.id}><OrderDetails order={order}/></tr>})
+                }
             </tbody>
         </table>
         </>
