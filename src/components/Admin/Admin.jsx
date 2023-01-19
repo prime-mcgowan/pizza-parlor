@@ -1,6 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+//import component
+import HeaderRow from './HeaderRow.jsx';
+import OrderDetails from './OrderDetails.jsx';
+
 function Admin () {
   //get customerOrder reducer from Redux store
     const customerOrder = useSelector(store => store.customerOrder);
@@ -8,11 +12,16 @@ function Admin () {
     return (
         <>
         <h3>Here are customer orders:</h3>
-        <ul>
+        <table>
+            <thead>
+                <HeaderRow />
+            </thead>
+            <tbody>
             {customerOrder.map((order) => {
-            return <li key={order.id}> {order.customer_name} </li>})
+            return <tr key={order.id}><OrderDetails order={order}/></tr>})
             }
-        </ul>
+            </tbody>
+        </table>
         </>
     )
 }
