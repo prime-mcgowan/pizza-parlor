@@ -24,17 +24,19 @@ const customerInfo = (state = [], action) => {
 
 
 const customerOrder = (state = [], action) => {
+    if(action.type === 'SET_ORDERS') {
+        return [action.payload];
+    }
     return state;
 }
 
 const orderCost = (state = [], action) => {
     return state;
 }
-   
 
 //store
 const reduxStore = createStore(combineReducers ({
-    //reducers go here
+    pizzaMenu, pizzaOrder, customerInfo, customerOrder, orderCost
 }))
 
 
