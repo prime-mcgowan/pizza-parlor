@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
+import logger from 'redux-logger';
 
 //import redux
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 //reducers
@@ -25,7 +26,7 @@ const customerInfo = (state = [], action) => {
 
 const customerOrder = (state = [], action) => {
     if(action.type === 'SET_ORDERS') {
-        return [action.payload];
+        return action.payload;
     }
     return state;
 }
@@ -37,7 +38,7 @@ const orderCost = (state = [], action) => {
 //store
 const reduxStore = createStore(combineReducers ({
     pizzaMenu, pizzaOrder, customerInfo, customerOrder, orderCost
-}))
+}), applyMiddleware(logger));
 
 
 ReactDOM.render(

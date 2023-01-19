@@ -1,21 +1,20 @@
-import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 function Admin () {
   //get customerOrder reducer from Redux store
     const customerOrder = useSelector(store => store.customerOrder);
 
-  //declare dispatch object
-    const dispatch = useDispatch();
-
     return (
         <>
+        <h3>Here are customer orders:</h3>
         <ul>
-            {customerOrder.map((order) => 
-            <li key={order.key}>
-                {order.customer_name} at {order.street_address}
-                </li>)}
+            {customerOrder.map((order) => {
+            return <li key={order.id}> {order.customer_name} </li>})
+            }
         </ul>
         </>
     )
 }
+
+export default Admin;

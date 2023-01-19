@@ -1,27 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './App.css';
 
-function App() {
-  //get customerOrder reducer from Redux store
-  const customerOrder = useSelector(store => store.customerOrder);
+//import components
+import Admin from '../Admin/Admin.jsx';
 
+function App() {
   //declare dispatch object
   const dispatch = useDispatch();
+
+  //declare useEffect
+  useEffect(() => {
+    getCustomerOrders();
+  })
 
   //function to http request get customerOrders
   const getCustomerOrders = () => {
     axios.get('/api/order')
     .then((res) => {
+      console.log(res.data);
       dispatch({
         type: 'SET_ORDERS',
         payload: res.data
       })
+      })
       .catch((err) => {
         console.log('GET /order request failed', err)
       })
-    })
   }
 
 
@@ -33,7 +39,7 @@ function App() {
   
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
-      
+      <Admin />
     </div>
   );
 }
