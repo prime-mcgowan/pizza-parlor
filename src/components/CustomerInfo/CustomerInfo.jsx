@@ -3,20 +3,29 @@ import {  useState } from 'react';
 import react from 'react';
 
 
-
 function CustomerInfo() {
-
-    // const [newOrder, setNewOrder] = useState([]);
 
     const [name, setName] = useState('');
     const [street_address, setStreet_Address] = useState('');
     const [city, setCity] = useState('');
     const [zip, setZip] = useState('');
+    const [type, setType] = useState('');
 
     const dispatch = useDispatch();
 
     const handleCustomerInfoSubmit = (event) => {
         event.preventDefault();
+        
+        // let data = {
+        //         name: name, 
+        //         street_address: street_address,
+        //         city: city, 
+        //         zip: zip,
+        //         type: type
+        // }
+
+        // console.log(data);
+
         console.log(`Add a pizza`)
         // console.log(`Adding Pizza`, {name, street_address, city, zip});
         dispatch({
@@ -25,13 +34,16 @@ function CustomerInfo() {
                 name: name, 
                 street_address: street_address,
                 city: city, 
-                zip: zip
+                zip: zip,
+                type: type
             }
         })
+        
         setName('');
         setStreet_Address('');
         setCity('');
         setZip('')
+        setType('')
     }
 
     return (
@@ -68,18 +80,23 @@ function CustomerInfo() {
 
                     <input
                     type="radio"
-                    id="html"
-                    name="pizza_method"
-                    value="option"/>
-                    <label for="option">Pick-up</label>
+                    id="pick_up"
+                    name="get_pizza_method"
+                    value="Pick Up"
+                    onChange={(event) => setType(event.target.value)}
+                    />
+                    <label htmlFor="pick_up">Pick-up</label>
+
 
                     <input
                     type="radio"
                     id="html"
-                    name="pizza_method"
-                    value="option"/>
-                    <label for="option">Delivery</label>
-                   
+                    name="get_pizza_method"
+                    value="Delivery"
+                    onChange={(event) => setType(event.target.value)}
+                    />
+                    <label htmlFor="delivery">Delivery</label> 
+                    
                     <button type="submit">Proceed to Checkout</button>
                 </form>
                 
