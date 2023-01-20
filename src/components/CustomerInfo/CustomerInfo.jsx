@@ -1,13 +1,8 @@
 import {  useDispatch } from 'react-redux';
 import {  useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
-<<<<<<< HEAD:src/components/customer-info.jsx
-=======
 import React from 'react';
 
-
->>>>>>> main:src/components/CustomerInfo/CustomerInfo.jsx
 function CustomerInfo() {
 
     const [name, setName] = useState('');
@@ -86,11 +81,6 @@ function CustomerInfo() {
                     onChange={(event) => setZip(event.target.value)}
                     />
 
-<<<<<<< HEAD:src/components/customer-info.jsx
-                    <button type="submit">Proceed to Checkout</button>
-
-                </form>
-=======
                     <input
                     type="radio"
                     id="pick_up"
@@ -99,7 +89,6 @@ function CustomerInfo() {
                     onChange={(event) => setType(event.target.value)}
                     />
                     <label htmlFor="pick_up">Pick-up</label>
-
 
                     <input
                     type="radio"
@@ -114,10 +103,6 @@ function CustomerInfo() {
                         Proceed to Checkout
                     </button>
                 </form>
-
->>>>>>> main:src/components/CustomerInfo/CustomerInfo.jsx
-                {/* customer sent on to checkout */}
-
         </>
     );//end of return 
 }
