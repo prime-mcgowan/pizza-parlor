@@ -1,6 +1,8 @@
 import {  useDispatch } from 'react-redux';
 import {  useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import React from 'react';
+
 
 function CustomerInfo() {
 
@@ -89,7 +91,6 @@ function CustomerInfo() {
                     />
                     <label htmlFor="pick_up">Pick-up</label>
 
-
                     <input
                     type="radio"
                     id="html"
@@ -103,9 +104,6 @@ function CustomerInfo() {
                         Proceed to Checkout
                     </button>
                 </form>
-
-                {/* customer sent on to checkout */}
-
         </>
     );//end of return 
 }
