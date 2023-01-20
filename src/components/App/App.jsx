@@ -57,7 +57,7 @@ function App() {
           <h1 className='App-title'>Prime Pizza</h1>
         </header>
         <nav>
-            <h4>I'm the Navbar, obvz:</h4>
+            <h4>Navbar</h4>
                 <ul>
                     <li>
                         <Link to="/menu">Menu</Link>
@@ -73,13 +73,13 @@ function App() {
         <Route exact path="/menu"> 
           <PizzaMenu fetchPizzaMenu={fetchPizzaMenu} />
         </Route>
-        <Route exact path="/custoerInfo">
+        <Route exact path="/customerInfo">
           <CustomerInfo />
         </Route>
-        <Route exact path="/Checkout">
+        <Route exact path=" ">
           <Checkout />
         </Route>
-        <Route exact path="/">
+        <Route exact path="/Admin">
           <Admin />
         </Route>
       </div>

@@ -1,5 +1,6 @@
 import {  useDispatch } from 'react-redux';
 import {  useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -13,10 +14,12 @@ function CustomerInfo() {
     const [zip, setZip] = useState('');
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleCustomerInfoSubmit = (event) => {
         event.preventDefault();
         console.log(`Add a pizza`)
+
         // console.log(`Adding Pizza`, {name, street_address, city, zip});
         dispatch({
             type: 'CREATE_NEW_CUSTOMER',
@@ -33,7 +36,8 @@ function CustomerInfo() {
     return (
         <>
             <h2>Step 2: Customer Information</h2>
-                <form onSubmit={handleCustomerInfoSubmit}>
+                <form onSubmit={handleCustomerInfoSubmit}
+                onClick={() => {history.push('/customerInfo')}}>
                     <input
                     type="text"
                     placeholder="Name"
@@ -62,7 +66,9 @@ function CustomerInfo() {
                     onChange={(event) => setZip(event.target.value)}
                     />
                 </form>
-                <button type="submit">Proceed to Checkout</button>
+                <button type="submit" onClick={() => {history.push('/checkout')}}>
+                    Proceed to Checkout
+                </button>
                 {/* customer sent on to checkout */}
 
         </>

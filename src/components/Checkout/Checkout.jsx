@@ -18,6 +18,7 @@ import axios from 'axios';
 function Checkout () {
     const dispatch = useDispatch();
     const history = useHistory();
+    
     // const checkoutPizza = useSelector(store => store.cartReducer);
     // const customerInfo = useSelector(store => store.customerInfoReducer[0]);
 
@@ -47,7 +48,7 @@ function Checkout () {
             dispatch({
                 type: 'EMPTY_CART'
             })
-            history.push('/')
+            history.push('/menu')
          console.log(response)
         }).catch((err) => {
           console.error('handleSubmit fail:', err)
@@ -56,7 +57,9 @@ function Checkout () {
 
       return (
         <>
-        <button onClick={handleCheckout}>Checkout</button>
+        <button onClick={handleCheckout}>
+          Checkout
+        </button>
         </>
       )
 
