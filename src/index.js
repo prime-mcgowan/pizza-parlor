@@ -20,7 +20,7 @@ const pizzaOrder = (state = [], action) => {
 
 
 const customerInfo = (state = [], action) => {
-    if (action.type === 'CREATURE_NEW_CUSTOMER') {
+    if (action.type === 'CREATE_NEW_CUSTOMER') {
         return action.payload;
     }
     return state;
