@@ -2,22 +2,33 @@ import {  useDispatch } from 'react-redux';
 import {  useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import React from 'react';
 
 
 function CustomerInfo() {
-
-    // const [newOrder, setNewOrder] = useState([]);
 
     const [name, setName] = useState('');
     const [street_address, setStreet_Address] = useState('');
     const [city, setCity] = useState('');
     const [zip, setZip] = useState('');
+    const [type, setType] = useState('');
 
     const dispatch = useDispatch();
     const history = useHistory();
 
     const handleCustomerInfoSubmit = (event) => {
         event.preventDefault();
+        
+        // let data = {
+        //         name: name, 
+        //         street_address: street_address,
+        //         city: city, 
+        //         zip: zip,
+        //         type: type
+        // }
+
+        // console.log(data);
+
         console.log(`Add a pizza`)
 
         // console.log(`Adding Pizza`, {name, street_address, city, zip});
@@ -27,10 +38,16 @@ function CustomerInfo() {
                 name: name, 
                 street_address: street_address,
                 city: city, 
-                zip: zip
+                zip: zip,
+                type: type
             }
         })
+        
         setName('');
+        setStreet_Address('');
+        setCity('');
+        setZip('')
+        setType('')
     }
 
     return (
@@ -65,10 +82,31 @@ function CustomerInfo() {
                     value={zip}
                     onChange={(event) => setZip(event.target.value)}
                     />
+
+                    <input
+                    type="radio"
+                    id="pick_up"
+                    name="get_pizza_method"
+                    value="Pick Up"
+                    onChange={(event) => setType(event.target.value)}
+                    />
+                    <label htmlFor="pick_up">Pick-up</label>
+
+
+                    <input
+                    type="radio"
+                    id="html"
+                    name="get_pizza_method"
+                    value="Delivery"
+                    onChange={(event) => setType(event.target.value)}
+                    />
+                    <label htmlFor="delivery">Delivery</label> 
+                    
+                    <button type="submit" onClick={() => {history.push('/checkout')}}>
+                        Proceed to Checkout
+                    </button>
                 </form>
-                <button type="submit" onClick={() => {history.push('/checkout')}}>
-                    Proceed to Checkout
-                </button>
+
                 {/* customer sent on to checkout */}
 
         </>
