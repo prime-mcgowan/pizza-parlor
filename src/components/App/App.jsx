@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import './App.css';
-
 //import components
+import Checkout from '../Checkout/Checkout';
+import CustomerInfo from '../customer-info';
 import Admin from '../Admin/Admin.jsx';
 
 function App() {
@@ -35,9 +36,8 @@ function App() {
       <header className='App-header'>
         <h1 className='App-title'>Prime Pizza</h1>
       </header>
-  
-      <img src='images/pizza_photo.png' />
-      <p>Pizza is great.</p>
+      <CustomerInfo />
+      <Checkout />
       <Admin />
     </div>
   );
