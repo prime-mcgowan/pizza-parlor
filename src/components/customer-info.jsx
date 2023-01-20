@@ -65,6 +65,21 @@ function CustomerInfo() {
                     value={zip}
                     onChange={(event) => setZip(event.target.value)}
                     />
+
+                    <input
+                    type="radio"
+                    id="html"
+                    name="pizza_method"
+                    value="option"/>
+                    <label for="option">Pick-up</label>
+
+                    <input
+                    type="radio"
+                    id="html"
+                    name="pizza_method"
+                    value="option"/>
+                    <label for="option">Delivery</label>
+                   
                     <button type="submit">Proceed to Checkout</button>
                 </form>
                 
