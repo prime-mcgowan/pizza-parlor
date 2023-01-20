@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import logger from 'redux-logger';
+import logger from 'redux-logger';
 
 //import redux
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
@@ -28,13 +30,15 @@ const customerInfo = (state = [], action) => {
 
 
 const customerOrder = (state = [], action) => {
+    if(action.type === 'SET_ORDERS') {
+        return action.payload;
+    }
     return state;
 }
 
 const orderCost = (state = [], action) => {
     return state;
 }
-   
 
 //store
 const reduxStore = createStore(combineReducers ({
@@ -53,4 +57,4 @@ ReactDOM.render(
             <App />, 
         </Provider>
     </React.StrictMode>
-,document.getElementById('root'));
+, document.getElementById('root'));
