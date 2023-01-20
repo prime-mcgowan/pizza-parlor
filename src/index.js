@@ -3,16 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import logger from 'redux-logger';
-import logger from 'redux-logger';
 
 //import redux
-import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 //reducers
 const pizzaMenu = (state = [], action) => {
-    return state;
+    switch (action.type) {
+        case 'SET_PIZZAMENU':
+          return action.payload; // 👈 action.payload evaulates to
+                                 // the array of book objects we sent :)
+        default:
+          return state;
+      }
 }
 
 

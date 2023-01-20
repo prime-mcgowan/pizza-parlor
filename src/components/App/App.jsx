@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import './App.css';
+
 //import components
+import PizzaMenu from '../PizzaMenu/PizzaMenu.jsx';
 import Checkout from '../Checkout/Checkout';
 import CustomerInfo from '../customer-info';
 import Admin from '../Admin/Admin.jsx';
@@ -31,11 +33,28 @@ function App() {
       })
   }
 
+
+  const fetchPizzaMenu = () => {
+    axios({
+      method: 'GET',
+      url: '/api/pizza'
+    }).then((response) => {
+      console.log(response);
+      dispatch({
+        type: 'SET_PIZZAMENU',
+        payload: response.data // 👈 this is array of pizza objects!
+      })
+    }).catch((err) => {
+      console.error('BookList useEffect fail:', err)
+    })
+  }
+  
   return (
     <div className='App'>
       <header className='App-header'>
         <h1 className='App-title'>Prime Pizza</h1>
       </header>
+      <PizzaMenu fetchPizzaMenu={fetchPizzaMenu} />
       <CustomerInfo />
       <Checkout />
       <Admin />
