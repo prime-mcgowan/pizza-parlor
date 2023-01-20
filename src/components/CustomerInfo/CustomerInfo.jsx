@@ -2,12 +2,6 @@ import {  useDispatch } from 'react-redux';
 import {  useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-<<<<<<< HEAD:src/components/customer-info.jsx
-=======
-import React from 'react';
-
-
->>>>>>> main:src/components/CustomerInfo/CustomerInfo.jsx
 function CustomerInfo() {
 
     const [name, setName] = useState('');
@@ -45,6 +39,7 @@ function CustomerInfo() {
                 type: type
             }
         })
+        history.push('/checkout')
         
         setName('');
         setStreet_Address('');
@@ -56,8 +51,7 @@ function CustomerInfo() {
     return (
         <>
             <h2>Step 2: Customer Information</h2>
-                <form onSubmit={handleCustomerInfoSubmit}
-                onClick={() => {history.push('/customerInfo')}}>
+                <form onSubmit={handleCustomerInfoSubmit}>
                     <input
                     type="text"
                     placeholder="Name"
@@ -86,11 +80,6 @@ function CustomerInfo() {
                     onChange={(event) => setZip(event.target.value)}
                     />
 
-<<<<<<< HEAD:src/components/customer-info.jsx
-                    <button type="submit">Proceed to Checkout</button>
-
-                </form>
-=======
                     <input
                     type="radio"
                     id="pick_up"
@@ -110,12 +99,11 @@ function CustomerInfo() {
                     />
                     <label htmlFor="delivery">Delivery</label> 
                     
-                    <button type="submit" onClick={() => {history.push('/checkout')}}>
+                    <button type="submit" >
                         Proceed to Checkout
                     </button>
                 </form>
 
->>>>>>> main:src/components/CustomerInfo/CustomerInfo.jsx
                 {/* customer sent on to checkout */}
 
         </>
