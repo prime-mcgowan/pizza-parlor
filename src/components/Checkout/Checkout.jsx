@@ -33,28 +33,17 @@ function Checkout () {
             street_address: customerInfo.street_address,
             city: customerInfo.city,
             zip: customerInfo.zip,
-            type: "Delivery",
-            total: "12.99",
-            pizzas: [{
-                quantity: 1,
-            }]
+            type: customerInfo.type,
+            total: totalCost,
+            pizzas: pizzaOrder
         }
         }).then((response) => {
             console.log(response)
-            // dispatch({
-            //     type: 'SET_ORDERS'
-            // })
-            /*
-            dispatch({
-                type: 'EMPTY_CART'
-            })
-            */
-
-            // history.push('/menu')
-         console.log(response)
         }).catch((err) => {
           console.error('handleSubmit fail:', err)
         })
+
+        history.push('/menu');
       };
 
       return (
@@ -62,13 +51,13 @@ function Checkout () {
         <h1>Prime Pizza</h1>
         <h3>Step 3: Checkout</h3>
             <p>{customerInfo.name}</p>
-            <p>{customerInfo.streetAddress}</p>
+            <p>{customerInfo.street_address}</p>
             <p>{customerInfo.city}, {customerInfo.zip}</p>
             <table>
                 <thead>
                     <tr>
-                        <th>Customer Name:</th>
-                        <th>Cost:</th>
+                        <th>Customer Name: {customerInfo.name}</th>
+                        <th>Cost: {totalCost}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,7 +66,7 @@ function Checkout () {
                     </tr>
                 </tbody>
             </table>
-            <h2>Total: ${customerInfo.total}</h2>
+            <h2>Total: ${totalCost}</h2>
             <button onClick={handleCheckout}>Checkout</button>
         </>
       )

@@ -76,7 +76,7 @@ function App() {
         <Route exact path="/customerInfo">
           <CustomerInfo />
         </Route>
-        <Route exact path=" ">
+        <Route exact path="/checkout">
           <Checkout />
         </Route>
         <Route exact path="/Admin">

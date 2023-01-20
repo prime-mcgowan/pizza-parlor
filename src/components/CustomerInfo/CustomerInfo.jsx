@@ -3,6 +3,7 @@ import {  useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import React from 'react';
 
+
 function CustomerInfo() {
 
     const [name, setName] = useState('');
@@ -40,6 +41,7 @@ function CustomerInfo() {
                 type: type
             }
         })
+        history.push('/checkout')
         
         setName('');
         setStreet_Address('');
@@ -51,8 +53,7 @@ function CustomerInfo() {
     return (
         <>
             <h2>Step 2: Customer Information</h2>
-                <form onSubmit={handleCustomerInfoSubmit}
-                onClick={() => {history.push('/customerInfo')}}>
+                <form onSubmit={handleCustomerInfoSubmit}>
                     <input
                     type="text"
                     placeholder="Name"
@@ -99,7 +100,7 @@ function CustomerInfo() {
                     />
                     <label htmlFor="delivery">Delivery</label> 
                     
-                    <button type="submit" onClick={() => {history.push('/checkout')}}>
+                    <button type="submit" >
                         Proceed to Checkout
                     </button>
                 </form>
