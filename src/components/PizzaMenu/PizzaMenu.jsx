@@ -1,12 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
+import { useHistory } from 'react-router-dom';
 import axios from 'axios'
 import PizzaItem from './PizzaItem';
+
 
 
 function PizzaMenu ( {fetchPizzaMenu} ){
 
 const pizzaMenu = useSelector(store => store.pizzaMenu);
+const history = useHistory();
 
 useEffect(() => {
     fetchPizzaMenu()
@@ -20,6 +23,9 @@ useEffect(() => {
           return <PizzaItem key={pizza.id} pizza={pizza} />
         })}
       </ul>
+      <button onClick={() => {history.push('/customerInfo')}}>
+        Next
+      </button>
     </section>
     );
 }
