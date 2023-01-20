@@ -6,7 +6,7 @@ import './App.css';
 //import components
 import PizzaMenu from '../PizzaMenu/PizzaMenu.jsx';
 import Checkout from '../Checkout/Checkout';
-import CustomerInfo from '../customer-info';
+import CustomerInfo from '../CustomerInfo/CustomerInfo';
 import Admin from '../Admin/Admin.jsx';
 
 function App() {
