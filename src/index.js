@@ -21,6 +21,9 @@ const pizzaMenu = (state = [], action) => {
 
 
 const pizzaOrder = (state = [], action) => {
+    if (action.type === 'SET_ORDER') {
+        return [action.payload];
+    }
     return state;
 }
 
