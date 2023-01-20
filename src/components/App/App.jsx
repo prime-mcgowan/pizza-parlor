@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import './App.css';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 //import components
 import PizzaMenu from '../PizzaMenu/PizzaMenu.jsx';
 import Checkout from '../Checkout/Checkout';
-import CustomerInfo from '../customer-info';
+import CustomerInfo from '../CustomerInfo/CustomerInfo';
 import Admin from '../Admin/Admin.jsx';
 
 function App() {
@@ -50,15 +51,39 @@ function App() {
   }
   
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <h1 className='App-title'>Prime Pizza</h1>
-      </header>
-      <PizzaMenu fetchPizzaMenu={fetchPizzaMenu} />
-      <CustomerInfo />
-      <Checkout />
-      <Admin />
-    </div>
+    <Router>
+      <div className='App'>
+        <header className='App-header'>
+          <h1 className='App-title'>Prime Pizza</h1>
+        </header>
+        <nav>
+            <h4>Navbar</h4>
+                <ul>
+                    <li>
+                        <Link to="/menu">Menu</Link>
+                    </li>
+                    <li>
+                        <Link to="/customerInfo">Customer Information</Link>
+                    </li>
+                    <li>
+                        <Link to="/checkout">Checkout</Link>
+                    </li>
+                </ul>
+          </nav>
+        <Route exact path="/menu"> 
+          <PizzaMenu fetchPizzaMenu={fetchPizzaMenu} />
+        </Route>
+        <Route exact path="/customerInfo">
+          <CustomerInfo />
+        </Route>
+        <Route exact path=" ">
+          <Checkout />
+        </Route>
+        <Route exact path="/Admin">
+          <Admin />
+        </Route>
+      </div>
+    </Router>
   );
 }
 

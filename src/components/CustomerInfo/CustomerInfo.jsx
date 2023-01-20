@@ -1,20 +1,39 @@
 import {  useDispatch } from 'react-redux';
 import {  useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
+<<<<<<< HEAD:src/components/customer-info.jsx
+=======
+import React from 'react';
+
+
+>>>>>>> main:src/components/CustomerInfo/CustomerInfo.jsx
 function CustomerInfo() {
-
-    // const [newOrder, setNewOrder] = useState([]);
 
     const [name, setName] = useState('');
     const [street_address, setStreet_Address] = useState('');
     const [city, setCity] = useState('');
     const [zip, setZip] = useState('');
+    const [type, setType] = useState('');
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleCustomerInfoSubmit = (event) => {
         event.preventDefault();
+        
+        // let data = {
+        //         name: name, 
+        //         street_address: street_address,
+        //         city: city, 
+        //         zip: zip,
+        //         type: type
+        // }
+
+        // console.log(data);
+
         console.log(`Add a pizza`)
+
         // console.log(`Adding Pizza`, {name, street_address, city, zip});
         dispatch({
             type: 'CREATE_NEW_CUSTOMER',
@@ -22,16 +41,23 @@ function CustomerInfo() {
                 name: name, 
                 street_address: street_address,
                 city: city, 
-                zip: zip
+                zip: zip,
+                type: type
             }
         })
+        
         setName('');
+        setStreet_Address('');
+        setCity('');
+        setZip('')
+        setType('')
     }
 
     return (
         <>
             <h2>Step 2: Customer Information</h2>
-                <form onSubmit={handleCustomerInfoSubmit}>
+                <form onSubmit={handleCustomerInfoSubmit}
+                onClick={() => {history.push('/customerInfo')}}>
                     <input
                     type="text"
                     placeholder="Name"
@@ -60,9 +86,36 @@ function CustomerInfo() {
                     onChange={(event) => setZip(event.target.value)}
                     />
 
+<<<<<<< HEAD:src/components/customer-info.jsx
                     <button type="submit">Proceed to Checkout</button>
 
                 </form>
+=======
+                    <input
+                    type="radio"
+                    id="pick_up"
+                    name="get_pizza_method"
+                    value="Pick Up"
+                    onChange={(event) => setType(event.target.value)}
+                    />
+                    <label htmlFor="pick_up">Pick-up</label>
+
+
+                    <input
+                    type="radio"
+                    id="html"
+                    name="get_pizza_method"
+                    value="Delivery"
+                    onChange={(event) => setType(event.target.value)}
+                    />
+                    <label htmlFor="delivery">Delivery</label> 
+                    
+                    <button type="submit" onClick={() => {history.push('/checkout')}}>
+                        Proceed to Checkout
+                    </button>
+                </form>
+
+>>>>>>> main:src/components/CustomerInfo/CustomerInfo.jsx
                 {/* customer sent on to checkout */}
 
         </>
