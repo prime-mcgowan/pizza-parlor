@@ -3,6 +3,8 @@ import axios from 'axios';
 import './App.css';
 import Checkout from '../Checkout/Checkout';
 
+import CustomerInfo from '../customer-info';
+
 function App() {
 
   return (
@@ -10,6 +12,7 @@ function App() {
       <header className='App-header'>
         <h1 className='App-title'>Prime Pizza</h1>
       </header>
+      <CustomerInfo />
       <Checkout />
   
     </div>
