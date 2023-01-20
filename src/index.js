@@ -6,7 +6,7 @@ import logger from 'redux-logger';
 
 
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+
 
 //import redux
 import { createStore, combineReducers } from 'redux';
