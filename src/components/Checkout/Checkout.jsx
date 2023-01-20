@@ -18,8 +18,9 @@ import axios from 'axios';
 function Checkout () {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const checkoutPizza = useSelector(store => store.cartReducer);
-    // const customerInfo = useSelector(store => store.customerInfoReducer[0]);
+    const pizzaOrder = useSelector(store => store.pizzaOrder);
+    const customerInfo = useSelector(store => store.customerInfo);
+    const totalCost = useSelector(store => store.orderCost);
 
     const handleCheckout = event => {
         event.preventDefault();
@@ -28,26 +29,28 @@ function Checkout () {
           method: 'POST',
           url: '/api/order',
           data: {
-            customer_name: 'Malik',
-            street_address: '101 lane N',
-            city: 'San Francisco',
-            zip: '553322',
-            type: 'Delivery',
-            total: 12.99,
+            customer_name: customerInfo.name,
+            street_address: customerInfo.street_address,
+            city: customerInfo.city,
+            zip: customerInfo.zip,
+            type: "Delivery",
+            total: "12.99",
             pizzas: [{
-                id: '1',
-                quantity: '1'
+                quantity: 1,
             }]
         }
         }).then((response) => {
             console.log(response)
-            dispatch({
-                type: 'UPDATE_ORDER_LIST'
-            })
+            // dispatch({
+            //     type: 'SET_ORDERS'
+            // })
+            /*
             dispatch({
                 type: 'EMPTY_CART'
             })
-            history.push('/')
+            */
+
+            // history.push('/menu')
          console.log(response)
         }).catch((err) => {
           console.error('handleSubmit fail:', err)
@@ -56,7 +59,26 @@ function Checkout () {
 
       return (
         <>
-        <button onClick={handleCheckout}>Checkout</button>
+        <h1>Prime Pizza</h1>
+        <h3>Step 3: Checkout</h3>
+            <p>{customerInfo.name}</p>
+            <p>{customerInfo.streetAddress}</p>
+            <p>{customerInfo.city}, {customerInfo.zip}</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer Name:</th>
+                        <th>Cost:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{customerInfo.name}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Total: ${customerInfo.total}</h2>
+            <button onClick={handleCheckout}>Checkout</button>
         </>
       )
 

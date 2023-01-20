@@ -1,8 +1,6 @@
 import {  useDispatch } from 'react-redux';
 import {  useState } from 'react';
 
-
-
 function CustomerInfo() {
 
     // const [newOrder, setNewOrder] = useState([]);
@@ -61,8 +59,10 @@ function CustomerInfo() {
                     value={zip}
                     onChange={(event) => setZip(event.target.value)}
                     />
+
+                    <button type="submit">Proceed to Checkout</button>
+
                 </form>
-                <button type="submit">Proceed to Checkout</button>
                 {/* customer sent on to checkout */}
 
         </>
