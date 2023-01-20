@@ -17,7 +17,7 @@ useEffect(() => {
       <h2>All pizzas</h2>
       <ul>
         {pizzaMenu.map((pizza) => {
-          return <PizzaItem key={pizza.id} pizza={pizza} fetchPizzaMenu={fetchPizzaMenu} />
+          return <PizzaItem key={pizza.id} pizza={pizza} />
         })}
       </ul>
     </section>
