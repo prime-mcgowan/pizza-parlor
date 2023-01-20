@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import './App.css';
-import { useDispatch } from 'react-redux'
+
+//import components
 import PizzaMenu from '../PizzaMenu/PizzaMenu.jsx';
-
-
+import Checkout from '../Checkout/Checkout';
+import CustomerInfo from '../customer-info';
+import Admin from '../Admin/Admin.jsx';
 
 function App() {
+  //declare dispatch object
   const dispatch = useDispatch();
+
+  //declare useEffect
+  useEffect(() => {
+    getCustomerOrders();
+  })
+
+  //function to http request get customerOrders
+  const getCustomerOrders = () => {
+    axios.get('/api/order')
+    .then((res) => {
+      console.log(res.data);
+      dispatch({
+        type: 'SET_ORDERS',
+        payload: res.data
+      })
+      })
+      .catch((err) => {
+        console.log('GET /order request failed', err)
+      })
+  }
+
 
   const fetchPizzaMenu = () => {
     axios({
@@ -29,10 +54,10 @@ function App() {
       <header className='App-header'>
         <h1 className='App-title'>Prime Pizza</h1>
       </header>
-  
-      <img src='images/pizza_photo.png' />
-      <p>Pizza is great.</p>
       <PizzaMenu fetchPizzaMenu={fetchPizzaMenu} />
+      <CustomerInfo />
+      <Checkout />
+      <Admin />
     </div>
   );
 }

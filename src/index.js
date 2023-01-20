@@ -4,12 +4,8 @@ import './index.css';
 import App from './components/App/App';
 import logger from 'redux-logger';
 
-
-
-
-
 //import redux
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 //reducers
@@ -23,41 +19,46 @@ const pizzaMenu = (state = [], action) => {
       }
 }
 
+
 const pizzaOrder = (state = [], action) => {
     return state;
 }
 
 
 const customerInfo = (state = [], action) => {
+    if (action.type === 'CREATE_NEW_CUSTOMER') {
+        return action.payload;
+    }
     return state;
 }
 
 
 const customerOrder = (state = [], action) => {
+    if(action.type === 'SET_ORDERS') {
+        return action.payload;
+    }
     return state;
 }
 
 const orderCost = (state = [], action) => {
     return state;
 }
-   
 
 //store
 const reduxStore = createStore(combineReducers ({
     //reducers go here
-    pizzaMenu
-}),
-    // applyMiddleware(logger)
-);
+    pizzaMenu, 
+    pizzaOrder, 
+    customerInfo, 
+    customerOrder, 
+    orderCost
+}), applyMiddleware(logger));
 
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={reduxStore}>
-            <App /> 
+            <App />, 
         </Provider>
     </React.StrictMode>
-,document.getElementById('root'));
-
-
-
+, document.getElementById('root'));
