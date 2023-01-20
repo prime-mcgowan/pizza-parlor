@@ -22,7 +22,7 @@ const pizzaMenu = (state = [], action) => {
 
 const pizzaOrder = (state = [], action) => {
     if (action.type === 'SET_ORDER') {
-        return [action.payload];
+        return [...state, action.payload];
     }
     return state;
 }
@@ -43,7 +43,10 @@ const customerOrder = (state = [], action) => {
     return state;
 }
 
-const orderCost = (state = [], action) => {
+const orderCost = (state = 0, action) => {
+    if (action.type === 'ADD_TO_COST') {
+        return state + Number(action.payload);
+    }
     return state;
 }
 
